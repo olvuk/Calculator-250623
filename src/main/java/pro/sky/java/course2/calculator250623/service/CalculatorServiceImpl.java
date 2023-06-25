@@ -4,23 +4,27 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
-    private int num1;
-    private int num2;
+
     @Override
-    public int getPlusResult() {
+    public int getPlusResult(int num1, int num2) {
         return num1 + num2;
     }
     @Override
-    public int getMinusResult() {
+    public int getMinusResult(int num1, int num2) {
         return num1 - num2;
     }
     @Override
-    public int getMultiplyResult() {
+    public int getMultiplyResult(int num1, int num2) {
         return num1 * num2;
     }
     @Override
-    public int getDivideResult() {
-        return num1 / num2;
+    public int getDivideResult(int num1, int num2) {
+        if (num2 == 0) {
+            throw new IllegalArgumentException("Divide by zero error");
+        }
+        else {
+            return num1 / num2;
+        }
     }
 }
 
